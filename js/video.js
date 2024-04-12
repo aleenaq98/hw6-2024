@@ -46,18 +46,14 @@ document.querySelector("#faster").addEventListener("click", function() {
 });
 
 // skip ahead
-document.querySelector("#skip").addEventListener("click", function() {
-	if (!video.paused && !video.ended) {
-		var newTime = video.currentTime + 10;
-		if (newTime > video.duration) {
-			newTime = video.duration;
-		}
-		video.currentTime = newTime;
-		console.log("Current location:", video.currentTime);
-	} else if (video.ended) {
+document.getElementById("skip").addEventListener("click", function() {
+	if (video.currentTime + 10 > video.duration) {
 		video.currentTime = 0;
-		console.log("Current location:", video.currentTime);
+		console.log("Back to the start");
+	} else {
+		video.currentTime += 10;
 	}
+	console.log("Current location:", video.currentTime.toFixed(5));
 });
 
 // mute
