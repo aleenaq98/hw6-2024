@@ -10,18 +10,27 @@ window.addEventListener("load", function() {
 
 });
 
-var volumeSpan = document.getElementById('volume');
-var slider = document.getElementById("slider");
+// var volumeSpan = document.getElementById("volume");
+// var slider = document.getElementById("slider");
 
-slider.addEventListener("input", function() {
-    video.volume = slider.value / 100;
-    volumeSpan.textContent = (slider.value) + "%";
-    console.log("Volume: " + volumeSpan.textContent);
-});
+// slider.addEventListener("input", function() {
+//     video.volume = slider.value / 100;
+//     volumeSpan.textContent = (slider.value) + "%";
+//     console.log("Volume: " + volumeSpan.textContent);
+// });
 
 document.querySelector("#play").addEventListener("click", function() {
     video.play();
     console.log("Play Video");
+	var volumeSpan = document.getElementById("volume");
+	var slider = document.getElementById("slider");
+
+	slider.addEventListener("input", function() {
+		video.volume = slider.value / 100;
+		volumeSpan.textContent = slider.value + "%";
+		console.log("Volume: " + volumeSpan.textContent);
+	});
+	volumeSpan.textContent = slider.value + "%";
 });
 
 // pause.
