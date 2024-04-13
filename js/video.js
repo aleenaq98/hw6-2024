@@ -75,7 +75,7 @@ muteButton.addEventListener("click", function() {
 // volume slider
 var slider = document.getElementById("slider");
 slider.addEventListener("input", function () {
-	video.volume = this.value / 100;
+	video.volume = slider.value / 100;
 	volumeSpan.textContent = video.volume * 100 + "%";
 });
 
