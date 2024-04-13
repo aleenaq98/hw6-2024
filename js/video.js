@@ -10,15 +10,6 @@ window.addEventListener("load", function() {
 
 });
 
-// play and volume
-// var volumeSpan = document.getElementById('volume');
-// document.querySelector("#play").addEventListener("click", function() {
-// 	video.play();
-// 	console.log("Play Video");
-// 	volumeSpan.textContent = (video.volume * 100).toFixed(0) + "%";
-// 	volumeSpan.textContent = video.volume * 100 + "%";
-// });
-
 var volumeSpan = document.getElementById('volume');
 var slider = document.getElementById("slider");
 
@@ -40,39 +31,36 @@ document.querySelector("#pause").addEventListener("click", function() {
 	console.log("Pause Video");
 });
 
-// volume
-
-// var volumeSpan = document.getElementById("volume");
-//     var slider = document.getElementById("slider");
-
-//     slider.addEventListener("input", function() {
-//         video.volume = slider.value / 100;
-//         volumeSpan.textContent = slider.value + "%";
-// });
-
 // slow down
 document.querySelector("#slower").addEventListener("click", function() {
 	video.playbackRate -= 0.1;
-	console.log("New speed:", video.playbackRate);
+	console.log("Slow down video");
+	console.log("Speed is", video.playbackRate);
 });
 
 // speed up
 document.querySelector("#faster").addEventListener("click", function() {
 	video.playbackRate += 0.1;
-	console.log("New speed:", video.playbackRate);
+	console.log("Speed up video");
+	console.log("Speed is", video.playbackRate);
 });
 
-// skip ahead
+
 document.getElementById("skip").addEventListener("click", function() {
-	if (video.currentTime + 10 > video.duration) {
-		video.currentTime = 0;
-		console.log("Back to the start");
-	} else {
-		video.currentTime += 10;
-	}
-	console.log("Skip ahead");
-	console.log("Video current time is", video.currentTime.toFixed(5));
-	
+    if (!video.paused && !video.ended) {
+        var newTime = video.currentTime + 10;
+        if (newTime >= video.duration) {
+            video.currentTime = video.duration;
+            console.log("Reached end of the video");
+        } else {
+            video.currentTime = newTime;
+        }
+    } else {
+        video.currentTime = 0;
+        console.log("Back to the start");
+    }
+    console.log("Skip ahead");
+	console.log("Video current time is", video.currentTime.toFixed(2));
 });
 
 // mute
